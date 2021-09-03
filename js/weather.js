@@ -6,7 +6,7 @@ const weatherbtn = async () => {
     cityName.value = ''
 
     // api linkup
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=22ff956ef9e5ed8fe9d3b5d99917c389`
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=22ff956ef9e5ed8fe9d3b5d99917c389&units=metric`
 
     const res = await fetch(url)
     const data = await res.json()
@@ -14,13 +14,13 @@ const weatherbtn = async () => {
 
 }
 const showDetails = info => {
-    // console.log(info)
+    console.log(info)
     const alldetails = document.getElementById('details')
     alldetails.innerHTML = `
 
         <img src="http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png" alt="">
             <h1>${info.name}</h1>
-            <h3><span>${parseInt((info.main.temp) - 272.15)}</span>&deg;C</h3>
+            <h3><span>${info.main.temp}</span>&deg;C</h3>
             <h1 class="lead">${info.weather[0].description}</h1>
 
 `
